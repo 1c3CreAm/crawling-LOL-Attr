@@ -19,7 +19,6 @@ def getHTMLText(url):
     except:
         return ''
 
-
 def getHeroName(namelist,url):
     html = getHTMLText(url)
     soup = BeautifulSoup(html,'html.parser')
@@ -31,7 +30,6 @@ def getHeroName(namelist,url):
             namelist.append(str(bb).split('/')[1])
         except:
             return ''
-
 
 def getHeroAttr(namelist,url,fliepath):
     count = 0
@@ -55,19 +53,12 @@ def getHeroAttr(namelist,url,fliepath):
                 attrinfo.update({'属性名称': name.lstrip(), '数值': value.lstrip()})
                 with open(fliepath, 'a', encoding='utf-8') as f:
                     f.write(str(attrinfo) + '\n')
-                    print("\r当前进度: {:.2f}%".format(count * 100 / len(namelist)), end="")
+            print("\r当前进度: {:.2f}%".format(count * 100 / len(namelist)), end="")
 
         except:
             count = count + 1
             print("\r当前进度: {:.2f}%".format(count * 100 / len(namelist)), end="")
             continue
-
-
-
-
-
-
-
 
 def main():
     listurl = "http://lol.duowan.com/hero/"
